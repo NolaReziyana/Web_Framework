@@ -31,13 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'nama',
             'tanggal_lahir',
             'jekel',
-            'alamat',
+            'id_jurusan',
+            'jurusan.nama_jurusan',
+            'id_prodi',
             'prodi.prodi',
             'prodi.keterangan',
-
-            //'id_prodi',
-            //'email:email',
-            //'alamat',
+            'email',
+            'alamat',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

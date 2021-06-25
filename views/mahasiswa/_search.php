@@ -25,6 +25,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'jekel') ?>
 
+    <?php // echo $form->field($model, 'id_jurusan') ?>
+
     <?php // echo $form->field($model, 'id_prodi') ?>
 
     <?php // echo $form->field($model, 'email') ?>

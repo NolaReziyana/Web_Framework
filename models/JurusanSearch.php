@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Mahasiswa;
+use app\models\Jurusan;
 
 /**
- * MahasiswaSearch represents the model behind the search form of `app\models\Mahasiswa`.
+ * JurusanSearch represents the model behind the search form of `app\models\Jurusan`.
  */
-class MahasiswaSearch extends Mahasiswa
+class JurusanSearch extends Jurusan
 {
     /**
      * {@inheritdoc}
@@ -17,8 +17,8 @@ class MahasiswaSearch extends Mahasiswa
     public function rules()
     {
         return [
-            [['id', 'id_jurusan', 'id_prodi'], 'integer'],
-            [['nim', 'nama', 'tanggal_lahir', 'jekel', 'email', 'alamat'], 'safe'],
+            [['id_jurusan', 'kode_jurusan'], 'integer'],
+            [['nama_jurusan'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class MahasiswaSearch extends Mahasiswa
      */
     public function search($params)
     {
-        $query = Mahasiswa::find();
+        $query = Jurusan::find();
 
         // add conditions that should always apply here
 
@@ -58,17 +58,11 @@ class MahasiswaSearch extends Mahasiswa
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
             'id_jurusan' => $this->id_jurusan,
-            'id_prodi' => $this->id_prodi,
+            'kode_jurusan' => $this->kode_jurusan,
         ]);
 
-        $query->andFilterWhere(['like', 'nim', $this->nim])
-            ->andFilterWhere(['like', 'nama', $this->nama])
-            ->andFilterWhere(['like', 'tanggal_lahir', $this->tanggal_lahir])
-            ->andFilterWhere(['like', 'jekel', $this->jekel])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'alamat', $this->alamat]);
+        $query->andFilterWhere(['like', 'nama_jurusan', $this->nama_jurusan]);
 
         return $dataProvider;
     }
